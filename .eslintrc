@@ -1,0 +1,26 @@
+{
+  "extends": "standard",
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint",
+    "standard",
+    "promise",
+    "mocha"
+  ],
+  "env": {
+    "mocha": true,
+    "node": true
+  },
+  "globals": {
+    "expect": true,
+    "sinon": true,
+    "sandbox": true
+  },
+  "rules": {
+    "mocha/no-exclusive-tests": "error",
+    "mocha/no-global-tests": "error",
+    "mocha/no-identical-title": "error",
+    "mocha/no-nested-tests": "error",
+    "mocha/no-sibling-hooks": "error"
+  }
+}

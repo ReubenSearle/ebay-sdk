@@ -1,0 +1,25 @@
+{
+  "all": true,
+  "reporter": [
+    "html",
+    "text",
+    "json-summary"
+  ],
+  "statements": 80,
+  "lines": 79,
+  "branches": 33,
+  "functions": 89,
+  "exclude": [
+    "test/**/*.js",
+    "coverage",
+    "public",
+    "config",
+    "webpack.config.js",
+    "src/server.js",
+    "src/rpc/**/*.js",
+    "migrations",
+    "src/libs/uuid.js",
+    "src/database/database.js",
+    "src/database/index.js"
+  ]
+}

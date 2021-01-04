@@ -1,0 +1,42 @@
+{
+  "name": "ebay-sdk",
+  "version": "1.0.0",
+  "description": "A lightweight wrapper for the RESTful eBay API",
+  "author": "Reuben Searle",
+  "type": "module",
+  "module": "./lib/esm/index.js",
+  "files": [
+    "lib/"
+  ],
+  "scripts": {
+    "coverage": "nyc mocha --exit && nyc check-coverage",
+    "lint": "eslint . --ext .ts --quiet && echo '✔ All good!'",
+    "lint:fix": "eslint --ext .ts --fix .",
+    "test": "npm run lint && npm run coverage",
+    "compile": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ebay-sdk.git"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.11.1",
+    "@typescript-eslint/parser": "^4.11.1",
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "dirty-chai": "^2.0.1",
+    "eslint": "^7.15.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-mocha": "^8.0.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.1.0",
+    "mocha": "^8.2.1",
+    "nyc": "^15.1.0",
+    "sinon-chai": "^3.5.0",
+    "typescript": "^4.1.3"
+  },
+  "dependencies": {},
+  "license": "ISC"
+}
