@@ -140,4 +140,4 @@ src/_samples
 package-lock.json
 
 # Compiled
-dist
+lib
