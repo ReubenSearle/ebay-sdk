@@ -5,6 +5,8 @@
   "author": "Reuben Searle",
   "type": "module",
   "module": "./lib/esm/index.js",
+  "main": "./lib/esm/index.js",
+  "types": "/lib/esm/index.d.js",
   "files": [
     "lib/"
   ],
