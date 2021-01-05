@@ -4,9 +4,9 @@
   "description": "A lightweight wrapper for the RESTful eBay API",
   "author": "Reuben Searle",
   "type": "module",
-  "module": "./lib/esm/index",
-  "main": "./lib/esm/index",
-  "types": "/lib/esm/index",
+  "module": "./lib/esm/index.js",
+  "main": "./lib/esm/index.js",
+  "types": "/lib/esm/index.d.ts",
   "files": [
     "lib/"
   ],
