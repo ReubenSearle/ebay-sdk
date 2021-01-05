@@ -1,5 +1,5 @@
 import { AppConfig } from './types/appConfig.js';
-export declare class eBaySDK {
+export default class eBaySDK {
     readonly appConfig: AppConfig;
     constructor(appConfig: AppConfig);
 }
