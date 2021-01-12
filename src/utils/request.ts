@@ -11,7 +11,7 @@ export default class Request {
   async send (baseUrl: String, params: URLSearchParams) {
     try {
       const defaultParams = this.getDefaultRequestParams()
-      const url = `${baseUrl}/${params.toString}${defaultParams.toString()}`
+      const url = `${baseUrl}?${((params.toString()))}&${defaultParams.toString()}`
       const response = await fetch(url)
       return response.json()
     } catch (error) {
