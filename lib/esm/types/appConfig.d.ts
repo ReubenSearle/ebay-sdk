@@ -1,3 +1,6 @@
+import marketplaceIdEnum from '../config/marketplaceIdEnum.js';
 export declare type AppConfig = {
-    sandbox: boolean;
+    applicationId: string;
+    marketplaceId?: marketplaceIdEnum;
+    sandbox?: boolean;
 };
