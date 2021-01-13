@@ -1,5 +1,5 @@
 import { AppConfig } from './types/appConfig.js'
-import marketplaceIdEnum from './config/marketplaceIdEnum.js'
+import marketplaceIdEnum from './enums/marketplaceIdEnum.js'
 import FindingApi from './api/findingApi.js'
 import Request from './utils/request.js'
 

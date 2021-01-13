@@ -1,4 +1,5 @@
-import { IEbayItem } from '../interfaces/ebayItem.js'
+import { IEbayItems, IEbayItem } from '../interfaces/ebayItems.js'
+import { IFindItemsAdvancedRequestOptions } from '../interfaces/findingRequestOptions.js'
 import Request from '../utils/request.js'
 
 export default class FindingApi {
@@ -9,21 +10,30 @@ export default class FindingApi {
     this.request = request
   }
 
-  async findItemsByCategory (categoryId: Number): Promise<Array<IEbayItem>> {
-    const params = new URLSearchParams({
-      'OPERATION-NAME': 'findItemsByCategory',
-      'GLOBAL-ID': 'EBAY-GB',
-      'paginationInput.entriesPerPage': '100',
-      categoryId: categoryId.toString(),
-      sortOrder: 'DistanceNearest',
-      buyerPostalCode: 'CT19 5HE'
-    })
+  async findItemsAdvanced (options: IFindItemsAdvancedRequestOptions): Promise<IEbayItems> {
+    const params = this.getFindItemsAdvancedRequestParams(options)
     const response = await this.request.send(this.ebayApiBaseUrl, params)
-    const responseItems = <Array<IEbayItem>> response.findItemsByCategoryResponse[0].searchResult[0].item
-    return responseItems.map(responseItem => {
-      return {
-        itemId: responseItem.itemId
-      }
+    const responseItems = response?.findItemsByCategoryResponse?.[0]?.searchResult?.[0]?.item
+    if (!responseItems) throw new Error('Failed to parse the eBay API response')
+    return responseItems.map(this.getMappedItemFromResponse)
+  }
+
+  private getFindItemsAdvancedRequestParams (options: IFindItemsAdvancedRequestOptions) : URLSearchParams {
+    const params = new URLSearchParams({
+      'OPERATION-NAME': 'findItemsAdvanced',
+      'GLOBAL-ID': options.marketplaceId,
+      'paginationInput.entriesPerPage': options.itemsPerPage.toString()
     })
+    if (options.buyerPostalCode) params.append('buyerPostalCode', options.buyerPostalCode)
+    if (options.categoryId) params.append('categoryId', options.categoryId.toString())
+    if (options.keywords) params.append('keywords', options.keywords)
+    if (options.sortOrder) params.append('sortOrder', options.sortOrder)
+    return params
+  }
+
+  private getMappedItemFromResponse (responseItem: any): IEbayItem {
+    return {
+      itemId: responseItem.itemId
+    }
   }
 }
