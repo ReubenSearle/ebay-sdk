@@ -1,3 +1,4 @@
+import marketplaceId from '../enums/marketplaceId.js'
 import { IEbayItems, IEbayItem } from '../interfaces/ebayItems.js'
 import { IFindItemsAdvancedRequestOptions } from '../interfaces/findingRequestOptions.js'
 import Request from '../utils/request.js'
@@ -21,12 +22,12 @@ export default class FindingApi {
   private getFindItemsAdvancedRequestParams (options: IFindItemsAdvancedRequestOptions) : URLSearchParams {
     const params = new URLSearchParams({
       'OPERATION-NAME': 'findItemsAdvanced',
-      'GLOBAL-ID': options.marketplaceId,
-      'paginationInput.entriesPerPage': options.itemsPerPage.toString()
+      'GLOBAL-ID': options.marketplaceId || marketplaceId.default
     })
     if (options.buyerPostalCode) params.append('buyerPostalCode', options.buyerPostalCode)
     if (options.categoryId) params.append('categoryId', options.categoryId.toString())
     if (options.keywords) params.append('keywords', options.keywords)
+    if (options.itemsPerPage) params.append('paginationInput.entriesPerPage', options.itemsPerPage.toString())
     if (options.sortOrder) params.append('sortOrder', options.sortOrder)
     return params
   }

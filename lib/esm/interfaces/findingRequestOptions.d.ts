@@ -1,10 +1,10 @@
 import MarketplaceId from '../enums/marketplaceId';
-import SortOrder from '../enums/sortOrder';
+import ItemSortOrder from '../enums/itemSortOrder';
 export interface IFindItemsAdvancedRequestOptions {
     buyerPostalCode?: string;
     categoryId?: number;
-    itemsPerPage: number;
+    itemsPerPage?: number;
     keywords?: string;
-    marketplaceId: MarketplaceId;
-    sortOrder?: SortOrder;
+    marketplaceId?: MarketplaceId;
+    sortOrder?: ItemSortOrder;
 }
