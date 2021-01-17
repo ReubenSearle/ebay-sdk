@@ -1,0 +1,26 @@
+declare enum marketplaceId {
+    DEFAULT = "EBAY-GB",
+    EBAY_US = "EBAY-US",
+    EBAY_ENCA = "EBAY-ENCA",
+    EBAY_GB = "EBAY-GB",
+    EBAY_AU = "EBAY-AU",
+    EBAY_AT = "EBAY-AT",
+    EBAY_FRBE = "EBAY-FRBE",
+    EBAY_FR = "EBAY-FR",
+    EBAY_DE = "EBAY-DE",
+    EBAY_MOTOR = "EBAY-MOTOR",
+    EBAY_IT = "EBAY-IT",
+    EBAY_NLBE = "EBAY-NLBE",
+    EBAY_NL = "EBAY-NL",
+    EBAY_ES = "EBAY-ES",
+    EBAY_CH = "EBAY-CH",
+    EBAY_HK = "EBAY-HK",
+    EBAY_IN = "EBAY-IN",
+    EBAY_IE = "EBAY-IE",
+    EBAY_MY = "EBAY-MY",
+    EBAY_FRCA = "EBAY-FRCA",
+    EBAY_PH = "EBAY-PH",
+    EBAY_PL = "EBAY-PL",
+    EBAY_SG = "EBAY-SG"
+}
+export default marketplaceId;

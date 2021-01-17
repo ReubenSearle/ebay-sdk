@@ -7,5 +7,7 @@ export default class FindingApi {
     constructor(request: Request);
     findItemsAdvanced(options: IFindItemsAdvancedRequestOptions): Promise<IEbayItems>;
     private getFindItemsAdvancedRequestParams;
+    private getErrorFromResponse;
+    private getMappedItemsFromResponse;
     private getMappedItemFromResponse;
 }

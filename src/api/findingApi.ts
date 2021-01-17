@@ -13,11 +13,9 @@ export default class FindingApi {
   async findItemsAdvanced (options: IFindItemsAdvancedRequestOptions): Promise<IEbayItems> {
     const params = this.getFindItemsAdvancedRequestParams(options)
     const response = await this.request.send(this.ebayApiBaseUrl, params)
-    const responseError = response?.findItemsAdvancedResponse?.[0]?.errorMessage?.[0]?.error?.[0]?.message?.[0]
+    const responseError = this.getErrorFromResponse(response)
     if (responseError) throw new Error(responseError)
-    const responseItems = response?.findItemsAdvancedResponse?.[0]?.searchResult?.[0]?.item
-    if (!responseItems) throw new Error('Failed to parse the eBay API response')
-    return responseItems.map(this.getMappedItemFromResponse)
+    return this.getMappedItemsFromResponse(response)
   }
 
   private getFindItemsAdvancedRequestParams (options: IFindItemsAdvancedRequestOptions) : URLSearchParams {
@@ -31,6 +29,15 @@ export default class FindingApi {
     if (options.keywords) params.append('keywords', options.keywords)
     if (options.sortOrder) params.append('sortOrder', options.sortOrder)
     return params
+  }
+
+  private getErrorFromResponse (response: any): string {
+    return response?.findItemsAdvancedResponse?.[0]?.errorMessage?.[0]?.error?.[0]?.message?.[0] || null
+  }
+
+  private getMappedItemsFromResponse (response: any): IEbayItems {
+    const responseItems = response?.findItemsAdvancedResponse?.[0]?.searchResult?.[0]?.item
+    return responseItems.map(this.getMappedItemFromResponse)
   }
 
   private getMappedItemFromResponse (responseItem: any): IEbayItem {

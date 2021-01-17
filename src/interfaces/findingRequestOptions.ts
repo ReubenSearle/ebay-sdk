@@ -1,4 +1,4 @@
-import MarketplaceId from '../enums/marketplaceIdEnum'
+import MarketplaceId from '../enums/marketplaceId'
 import SortOrder from '../enums/sortOrder'
 
 export interface IFindItemsAdvancedRequestOptions {
