@@ -7,7 +7,7 @@ import shippingType from '../enums/shippingType.js'
 export interface IEbayItem {
   condition: string
   country: string
-  distance: {
+  distance?: {
     units: distanceUnits
     value: number
   },

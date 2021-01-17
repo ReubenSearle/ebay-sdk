@@ -1,8 +1,4 @@
-import currency from '../enums/currency.js'
-import distanceUnits from '../enums/distanceUnits.js'
-import listingType from '../enums/listingType.js'
 import marketplaceId from '../enums/marketplaceId.js'
-import shippingType from '../enums/shippingType.js'
 import { IEbayItems, IEbayItem } from '../interfaces/ebayItems.js'
 import { IFindItemsAdvancedRequestOptions } from '../interfaces/findingRequestOptions.js'
 import Request from '../utils/request.js'
@@ -46,7 +42,7 @@ export default class FindingApi {
   }
 
   private getMappedItemFromResponse (responseItem: any): IEbayItem {
-    const mappedItem = <IEbayItem> {
+    const mappedItem: IEbayItem = {
       condition: responseItem.condition[0].conditionDisplayName[0],
       country: responseItem.country[0],
       imageUrls: responseItem.galleryURL.map((url: string) => new URL(url)),
@@ -56,36 +52,36 @@ export default class FindingApi {
         buyItNow: (responseItem.listingInfo[0].buyItNowAvailable[0] === 'true'),
         startTime: new Date(responseItem.listingInfo[0].startTime[0]),
         endTime: new Date(responseItem.listingInfo[0].endTime[0]),
-        listingType: <listingType>responseItem.listingInfo[0].listingType[0]
+        listingType: responseItem.listingInfo[0].listingType[0]
       },
       location: {
         name: responseItem.location[0],
         postalCode: responseItem.postalCode[0]
       },
-      marketplaceId: <marketplaceId>responseItem.globalId[0],
+      marketplaceId: responseItem.globalId[0],
       primaryCategory: {
         categoryId: parseInt(responseItem.primaryCategory[0].categoryId[0]),
         categoryName: responseItem.primaryCategory[0].categoryName[0]
       },
       sellingStatus: {
         currentPrice: {
-          currency: <currency>responseItem.sellingStatus[0].convertedCurrentPrice[0]['@currencyId'],
+          currency: responseItem.sellingStatus[0].convertedCurrentPrice[0]['@currencyId'],
           value: parseFloat(responseItem.sellingStatus[0].convertedCurrentPrice[0].__value__)
         }
       },
       shipping: {
         shippingPrice: {
-          currency: <currency>responseItem.shippingInfo[0].shippingServiceCost[0]['@currencyId'],
+          currency: responseItem.shippingInfo[0].shippingServiceCost[0]['@currencyId'],
           value: parseFloat(responseItem.shippingInfo[0].shippingServiceCost[0].__value__)
         },
-        shippingType: <shippingType>responseItem.shippingInfo[0].shippingType[0]
+        shippingType: responseItem.shippingInfo[0].shippingType[0]
       },
       title: responseItem.title[0],
       viewItemUrl: new URL(responseItem.viewItemURL[0])
     }
     if (responseItem.distance?.[0]) {
       mappedItem.distance = {
-        units: <distanceUnits>responseItem.distance[0]['@unit'],
+        units: responseItem.distance[0]['@unit'],
         value: parseFloat(responseItem.distance[0].__value__)
       }
     }
