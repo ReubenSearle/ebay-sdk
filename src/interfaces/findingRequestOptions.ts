@@ -5,8 +5,8 @@ import MarketplaceId from '../enums/marketplaceId'
 export interface IItemFilter {
   name: ItemFilterType,
   value: string,
-  paramName: string,
-  paramValue: string
+  paramName?: string,
+  paramValue?: string
 }
 
 export interface IItemFilters extends Array<IItemFilter> {}
