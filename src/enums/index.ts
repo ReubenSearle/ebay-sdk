@@ -1,4 +1,4 @@
-import * as marketplaceCategories from './category'
+import * as marketplaceCategory from './category'
 import condition from './condition'
 import currency from './currency'
 import distanceUnits from './distanceUnits'
@@ -9,7 +9,7 @@ import marketplaceId from './marketplaceId'
 import shippingType from './shippingType'
 
 export {
-  marketplaceCategories,
+  marketplaceCategory,
   condition,
   currency,
   distanceUnits,
