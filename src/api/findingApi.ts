@@ -29,6 +29,16 @@ export default class FindingApi {
     if (options.keywords) params.append('keywords', options.keywords)
     if (options.itemsPerPage) params.append('paginationInput.entriesPerPage', options.itemsPerPage.toString())
     if (options.sortOrder) params.append('sortOrder', options.sortOrder)
+    if (options.itemFilters) {
+      options.itemFilters.forEach((itemFilter, index) => {
+        params.append(`itemFilter(${index}).name`, itemFilter.name)
+        params.append(`itemFilter(${index}).value`, itemFilter.value)
+        if (itemFilter.paramName && itemFilter.paramValue) {
+          params.append(`itemFilter(${index}).paramName`, itemFilter.paramName)
+          params.append(`itemFilter(${index}).paramValue`, itemFilter.paramValue)
+        }
+      })
+    }
     return params
   }
 
