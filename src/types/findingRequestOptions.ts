@@ -2,19 +2,19 @@ import ItemFilterType from '../enums/itemFilterType'
 import ItemSortOrder from '../enums/itemSortOrder'
 import MarketplaceId from '../enums/marketplaceId'
 
-export interface IItemFilter {
+export type ItemFilter = {
   name: ItemFilterType,
   value: string,
   paramName?: string,
   paramValue?: string
 }
 
-export interface IItemFilters extends Array<IItemFilter> {}
+export type ItemFilters = [ItemFilter]
 
-export interface IFindItemsAdvancedRequestOptions {
+export type FindItemsAdvancedRequestOptions = {
   buyerPostalCode?: string,
   categoryId?: number,
-  itemFilters?: IItemFilters,
+  itemFilters?: ItemFilters,
   itemsPerPage?: number,
   keywords?: string,
   marketplaceId?: MarketplaceId

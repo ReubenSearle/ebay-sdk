@@ -1,6 +1,6 @@
 import marketplaceId from '../enums/marketplaceId.js'
-import { IEbayItems, IEbayItem } from '../interfaces/ebayItems.js'
-import { IFindItemsAdvancedRequestOptions } from '../interfaces/findingRequestOptions.js'
+import { EbayItems, EbayItem } from '../types/ebayItems.js'
+import { FindItemsAdvancedRequestOptions } from '../types/findingRequestOptions.js'
 import Request from '../utils/request.js'
 
 export default class FindingApi {
@@ -11,7 +11,7 @@ export default class FindingApi {
     this.request = request
   }
 
-  async findItemsAdvanced (options: IFindItemsAdvancedRequestOptions): Promise<IEbayItems> {
+  async findItemsAdvanced (options: FindItemsAdvancedRequestOptions): Promise<EbayItems> {
     const params = this.getFindItemsAdvancedRequestParams(options)
     const response = await this.request.send(this.ebayApiBaseUrl, params)
     const responseError = this.getErrorFromResponse(response)
@@ -19,7 +19,7 @@ export default class FindingApi {
     return this.getMappedItemsFromResponse(response)
   }
 
-  private getFindItemsAdvancedRequestParams (options: IFindItemsAdvancedRequestOptions) : URLSearchParams {
+  private getFindItemsAdvancedRequestParams (options: FindItemsAdvancedRequestOptions) : URLSearchParams {
     const params = new URLSearchParams({
       'OPERATION-NAME': 'findItemsAdvanced',
       'GLOBAL-ID': options.marketplaceId || marketplaceId.default
@@ -46,13 +46,13 @@ export default class FindingApi {
     return response?.findItemsAdvancedResponse?.[0]?.errorMessage?.[0]?.error?.[0]?.message?.[0] || null
   }
 
-  private getMappedItemsFromResponse (response: any): IEbayItems {
+  private getMappedItemsFromResponse (response: any): EbayItems {
     const responseItems = response?.findItemsAdvancedResponse?.[0]?.searchResult?.[0]?.item
     return responseItems.map(this.getMappedItemFromResponse)
   }
 
-  private getMappedItemFromResponse (responseItem: any): IEbayItem {
-    const mappedItem: IEbayItem = {
+  private getMappedItemFromResponse (responseItem: any): EbayItem {
+    const mappedItem: EbayItem = {
       condition: responseItem.condition[0].conditionDisplayName[0],
       country: responseItem.country[0],
       imageUrls: responseItem.galleryURL.map((url: string) => new URL(url)),

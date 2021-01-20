@@ -4,7 +4,7 @@ import listingType from '../enums/listingType.js'
 import marketplaceId from '../enums/marketplaceId.js'
 import shippingType from '../enums/shippingType.js'
 
-export interface IEbayItem {
+export type EbayItem = {
   condition: string
   country: string
   distance?: {
@@ -46,4 +46,4 @@ export interface IEbayItem {
   viewItemUrl: URL
 }
 
-export interface IEbayItems extends Array<IEbayItem> {}
+export type EbayItems = [EbayItem]
