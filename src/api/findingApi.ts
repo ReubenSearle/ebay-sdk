@@ -14,7 +14,7 @@ export default class FindingApi {
   }
 
   private determineEbayApiUrl (appConfig: AppConfig): URL {
-    const domain = appConfig.sandbox ? 'https://svcs.sandbox.ebay.com/' : 'https://svcs.ebay.com/'
+    const domain = appConfig.sandbox ? 'https://svcs.sandbox.ebay.com' : 'https://svcs.ebay.com'
     const path = 'services/search/FindingService/v1'
     return new URL(`${domain}/${path}`)
   }
