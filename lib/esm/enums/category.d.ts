@@ -1,3 +1,3 @@
-export declare enum gbCategoryId {
+export declare enum gb {
     automotiveToolsSupplies = 34998
 }
