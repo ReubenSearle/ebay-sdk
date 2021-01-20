@@ -8,10 +8,10 @@ export default class Request {
     this.appConfig = appConfig
   }
 
-  async send (baseUrl: String, params: URLSearchParams) {
+  async send (baseUrl: URL, params: URLSearchParams) {
     try {
       const defaultParams = this.getDefaultRequestParams()
-      const url = `${baseUrl}?${((params.toString()))}&${defaultParams.toString()}`
+      const url = `${baseUrl.toString()}?${((params.toString()))}&${defaultParams.toString()}`
       const response = await fetch(url)
       return response.json()
     } catch (error) {

@@ -1,17 +1,25 @@
 import marketplaceId from '../enums/marketplaceId.js'
+import { AppConfig } from '../types/appConfig.js'
 import { EbayItems, EbayItem } from '../types/ebayItems.js'
 import { FindItemsAdvancedRequestOptions } from '../types/findingRequestOptions.js'
 import Request from '../utils/request.js'
 
 export default class FindingApi {
-  private readonly ebayApiBaseUrl = 'https://svcs.ebay.com/services/search/FindingService/v1'
   private readonly request: Request
+  private readonly ebayApiBaseUrl
 
-  constructor (request: Request) {
+  constructor (appConfig: AppConfig, request: Request) {
     this.request = request
+    this.ebayApiBaseUrl = this.determineEbayApiUrl(appConfig)
   }
 
-  async findItemsAdvanced (options: FindItemsAdvancedRequestOptions): Promise<EbayItems> {
+  private determineEbayApiUrl (appConfig: AppConfig): URL {
+    const domain = appConfig.sandbox ? 'https://svcs.sandbox.ebay.com/' : 'https://svcs.ebay.com/'
+    const path = 'services/search/FindingService/v1'
+    return new URL(`${domain}/${path}`)
+  }
+
+  public async findItemsAdvanced (options: FindItemsAdvancedRequestOptions): Promise<EbayItems> {
     const params = this.getFindItemsAdvancedRequestParams(options)
     const response = await this.request.send(this.ebayApiBaseUrl, params)
     const responseError = this.getErrorFromResponse(response)
