@@ -35,7 +35,7 @@ export interface IEbayItem {
         };
     };
     shipping: {
-        shippingPrice: {
+        shippingPrice?: {
             currency: currency;
             value: number;
         };
