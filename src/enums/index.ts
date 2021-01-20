@@ -1,12 +1,12 @@
-import * as marketplaceCategory from './category'
-import condition from './condition'
-import currency from './currency'
-import distanceUnits from './distanceUnits'
-import itemFilterType from './itemFilterType'
-import itemSortOrder from './itemSortOrder'
-import listingType from './listingType'
-import marketplaceId from './marketplaceId'
-import shippingType from './shippingType'
+import * as marketplaceCategory from './category.js'
+import condition from './condition.js'
+import currency from './currency.js'
+import distanceUnits from './distanceUnits.js'
+import itemFilterType from './itemFilterType.js'
+import itemSortOrder from './itemSortOrder.js'
+import listingType from './listingType.js'
+import marketplaceId from './marketplaceId.js'
+import shippingType from './shippingType.js'
 
 export {
   marketplaceCategory,
