@@ -9,7 +9,7 @@ export type ItemFilter = {
   paramValue?: string
 }
 
-export type ItemFilters = [ItemFilter]
+export type ItemFilters = ItemFilter[]
 
 export type FindItemsAdvancedRequestOptions = {
   buyerPostalCode?: string,

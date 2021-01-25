@@ -46,4 +46,4 @@ export type EbayItem = {
   viewItemUrl: URL
 }
 
-export type EbayItems = [EbayItem]
+export type EbayItems = EbayItem[]

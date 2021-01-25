@@ -7,7 +7,7 @@ export declare type ItemFilter = {
     paramName?: string;
     paramValue?: string;
 };
-export declare type ItemFilters = [ItemFilter];
+export declare type ItemFilters = ItemFilter[];
 export declare type FindItemsAdvancedRequestOptions = {
     buyerPostalCode?: string;
     categoryId?: number;

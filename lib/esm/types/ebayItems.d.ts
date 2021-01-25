@@ -44,4 +44,4 @@ export declare type EbayItem = {
     title: string;
     viewItemUrl: URL;
 };
-export declare type EbayItems = [EbayItem];
+export declare type EbayItems = EbayItem[];
