@@ -55,7 +55,7 @@ export default class FindingApi {
   }
 
   private getMappedItemsFromResponse (response: any): EbayItems {
-    const responseItems = response?.findItemsAdvancedResponse?.[0]?.searchResult?.[0]?.item
+    const responseItems = response?.findItemsAdvancedResponse?.[0]?.searchResult?.[0]?.item || []
     return responseItems.map(this.getMappedItemFromResponse)
   }
 
